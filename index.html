@@ -107,6 +107,34 @@
     </div>
   </section>
 
+  <!-- INFERENCE -->
+  <section class="section alt-section" id="inference">
+    <div class="section-label">01.5 — Live Model Inference</div>
+    <div class="two-col">
+      <div class="prose-block">
+        <h2>Test the Model.<br/>Upload Hyperspectral Data.</h2>
+        <p>Drop a raw <strong>.npz</strong> file containing airborne hyperspectral measurements below. The file will be routed to our Hugging Face backend API, passing through normalisation, the spectral Deep CNN, and the XGBoost/CatBoost/RF ensemble.</p>
+        <p style="font-size: 14px; opacity: 0.7; margin-top: 10px;">Requires backend deployment. See HOSTING.txt.</p>
+      </div>
+      <div class="inference-ui">
+        <form id="upload-form" class="upload-zone">
+          <div class="upload-icon">⇪</div>
+          <p>Drag & Drop an .npz file here<br/>or <span class="browse-link" onclick="document.getElementById('npz-file').click()">browse your device</span></p>
+          <input type="file" id="npz-file" accept=".npz" hidden />
+        </form>
+        
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <span>Analysing 150 spectral bands...</span>
+        </div>
+        
+        <div id="results-panel" class="results-panel" style="display: none;">
+            <!-- JS will parse JSON results here -->
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PIPELINE -->
   <section class="section dark-section" id="pipeline">
     <div class="section-label light">02 — Pipeline Stages</div>
