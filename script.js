@@ -48,7 +48,7 @@ rpdFills.forEach(el => {
 });
 
 /* INFERENCE API LOGIC */
-const API_URL = 'https://YOUR_HUGGINGFACE_SPACE.hf.space/predict'; // Will be updated by user
+const API_URL = 'https://amsh4-hypesoilnet.hf.space/predict';
 const uploadForm = document.getElementById('upload-form');
 const fileInput = document.getElementById('npz-file');
 const loadingDiv = document.getElementById('loading');
@@ -119,10 +119,10 @@ function renderPredictions(preds) {
       if(preds[el]) {
           const card = document.createElement('div');
           card.className = 'pred-card';
-          card.innerHTML = \
-              <div class="pred-el">\</div>
-              <div class="pred-val">\ <span class="pred-unit">\</span></div>
-          \;
+          card.innerHTML = `
+              <div class="pred-el">${el}</div>
+              <div class="pred-val">${preds[el].value} <span class="pred-unit">${preds[el].unit}</span></div>
+          `;
           resultsPanel.appendChild(card);
       }
   });
@@ -136,5 +136,5 @@ function renderPredictions(preds) {
 function showError(msg) {
   uploadForm.style.display = 'block';
   resultsPanel.style.display = 'block';
-  resultsPanel.innerHTML = \<div class="api-error">\</div>\;
+  resultsPanel.innerHTML = `<div class="api-error">${msg}</div>`;
 }
